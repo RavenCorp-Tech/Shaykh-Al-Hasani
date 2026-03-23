@@ -3,17 +3,25 @@
    ============================================ */
 
 class ArticleDetail {
-  constructor() {
+  constructor(options = {}) {
+    const { autoInit = true } = options;
     this.articleContent = this.getArticleContent();
-    this.init();
+
+    if (autoInit) {
+      this.init();
+    }
   }
 
   init() {
     const urlParams = new URLSearchParams(window.location.search);
     const articleId = urlParams.get('id');
 
+    const isDetailPage = window.location.pathname.endsWith('article-detail.html');
+
     if (!articleId) {
-      this.showError('Article not found');
+      if (isDetailPage) {
+        this.showError('Article not found');
+      }
       return;
     }
 
@@ -2304,5 +2312,8 @@ function scrollToFootnote(event, id) {
 
 // Initialize when DOM is ready
 document.addEventListener('DOMContentLoaded', () => {
-  window.articleDetail = new ArticleDetail();
+  const isDetailPage = window.location.pathname.endsWith('article-detail.html');
+  if (isDetailPage) {
+    window.articleDetail = new ArticleDetail();
+  }
 });

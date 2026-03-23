@@ -145,7 +145,7 @@ footnotes: [
 ```
 
 ### Changing Colors
-Edit `app/css/styles.css`:
+Edit `css/styles.css`:
 ```css
 :root {
   --primary-color: #1a472a;        /* Change this */

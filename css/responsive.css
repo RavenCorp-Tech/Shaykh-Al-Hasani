@@ -208,6 +208,14 @@
     text-overflow: ellipsis;
   }
 
+  .search-btn {
+    padding: 0.4rem 0.62rem;
+    font-size: 0.78rem;
+    border-radius: 999px;
+    min-height: 38px;
+    white-space: nowrap;
+  }
+
   /* Hero Section */
   .hero {
     padding: 2.4rem 1rem 2.2rem;

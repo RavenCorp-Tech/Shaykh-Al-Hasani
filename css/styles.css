@@ -209,6 +209,32 @@ nav {
   color: var(--text-primary);
 }
 
+.search-btn {
+  background: var(--glass-bg-strong);
+  border: 1px solid var(--border-color);
+  padding: 0.5rem 1rem;
+  border-radius: 50px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all var(--transition-speed) ease;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--text-primary);
+  text-decoration: none;
+}
+
+.search-btn:hover {
+  background: var(--primary-color);
+  color: var(--bg-primary);
+  transform: translateY(-2px);
+}
+
+.search-btn .search-icon {
+  display: block;
+}
+
 .theme-toggle:hover {
   background: var(--primary-color);
   color: var(--bg-primary);
@@ -528,6 +554,43 @@ main > .section:first-child {
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 2rem;
   margin-top: 2rem;
+}
+
+.search-form {
+  display: flex;
+  gap: 0.9rem;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  margin: 0 auto;
+  max-width: 900px;
+}
+
+.search-input {
+  flex: 1 1 420px;
+  min-width: 260px;
+  padding: 0.95rem 1.15rem;
+  border-radius: 999px;
+  border: 1px solid var(--border-color);
+  background: var(--glass-bg-strong);
+  color: var(--text-primary);
+  box-shadow: var(--shadow-sm);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  transition: border-color var(--transition-speed) ease,
+              box-shadow var(--transition-speed) ease;
+}
+
+.search-input:focus {
+  border-color: var(--accent-color);
+  outline: 2px solid var(--accent-color);
+  outline-offset: 2px;
+}
+
+.search-summary {
+  text-align: center;
+  color: var(--text-secondary);
+  margin-top: 1.6rem;
 }
 
 @media (max-width: 1200px) {

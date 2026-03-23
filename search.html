@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Read detailed articles on Prophetic Ḥadīth by Shaykh al-Ḥasanī with comprehensive commentary and scholarly analysis.">
-  <meta name="keywords" content="hadith, scholarly article, Islamic sciences, research">
-  <title>Article - Shaykh al-Ḥasanī</title>
+  <meta name="description" content="Search articles by title or content on Shaykh al-Ḥasanī's website.">
+  <meta name="keywords" content="search, articles, hadith, Islamic sciences">
+  <title>Search Articles - Shaykh al-Ḥasanī</title>
   <link rel="icon" type="image/png" href="assets/light-logo.png">
   <link rel="stylesheet" href="css/styles.css">
   <link rel="stylesheet" href="css/responsive.css">
@@ -37,7 +37,20 @@
 
   <!-- Main Content -->
   <main>
-    <!-- Article Detail will be rendered here by JavaScript -->
+    <section class="section">
+      <div class="container">
+        <h1 class="section-title">Search Articles</h1>
+        <p class="section-subtitle">Type words from the title or the article content</p>
+
+        <form id="searchForm" class="search-form" role="search" aria-label="Search articles">
+          <input id="searchInput" class="search-input" type="search" name="q" placeholder="Search…" autocomplete="off" />
+          <button class="btn btn-primary" type="submit">Search</button>
+        </form>
+
+        <div id="searchSummary" class="search-summary" aria-live="polite"></div>
+        <div id="searchResults" class="articles-container"></div>
+      </div>
+    </section>
   </main>
 
   <!-- Footer -->
@@ -90,5 +103,6 @@
   <!-- Scripts -->
   <script src="js/main.js"></script>
   <script src="js/article-detail.js"></script>
+  <script src="js/search.js"></script>
 </body>
 </html>
