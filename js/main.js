@@ -73,7 +73,7 @@ class ShaykhAlHasaniApp {
     const logoImg = document.querySelector('.logo-container img');
     if (!logoImg) return;
 
-    logoImg.src = theme === 'dark' ? '../assets/light-logo.png' : '../assets/al-hasani.png';
+    logoImg.src = theme === 'dark' ? 'assets/light-logo.png' : 'assets/al-hasani.png';
   }
 
   /* ============================================

@@ -44,7 +44,7 @@ A **professional, fully-featured Islamic scholarship website** for Shaykh al-Ḥ
 
 ### Step 1: Open the Website
 ```
-Navigate to: app/index.html
+Navigate to: index.html
 Open with any modern web browser
 ```
 
@@ -65,18 +65,17 @@ Open with any modern web browser
 
 ```
 Shaykh-Al-Hasani/
-├── app/
-│   ├── index.html              ← Start here!
-│   ├── articles.html           ← Article listing
-│   ├── article-detail.html     ← Full article with footnotes
-│   ├── fatwah.html, books.html, etc. (6 more pages)
-│   ├── css/
-│   │   ├── styles.css          ← Main styling + themes
-│   │   └── responsive.css      ← Mobile responsiveness
-│   └── js/
-│       ├── main.js             ← Core functionality
-│       ├── articles.js         ← Article management
-│       └── article-detail.js   ← Footnote system
+├── index.html                  ← Start here!
+├── articles.html               ← Article listing
+├── article-detail.html         ← Full article with footnotes
+├── fatwah.html, books.html, etc. (6 more pages)
+├── css/
+│   ├── styles.css              ← Main styling + themes
+│   └── responsive.css          ← Mobile responsiveness
+└── js/
+  ├── main.js                 ← Core functionality
+  ├── articles.js             ← Article management
+  └── article-detail.js       ← Footnote system
 ├── assets/
 │   └── al-hasani.png           ← Logo
 └── README.md                    ← Full documentation
@@ -251,7 +250,7 @@ Edit `app/css/styles.css`:
 ## 📱 Test on Mobile
 
 ### Quick Test
-1. Open app/index.html on phone
+1. Open index.html on phone
 2. Click the hamburger menu (☰)
 3. Try the theme toggle
 4. Click an article
@@ -307,7 +306,7 @@ Your website is:
 ✅ Easy to maintain
 ✅ Ready for articles
 
-**Start with**: Open `app/index.html` in your browser!
+**Start with**: Open `index.html` in your browser!
 
 ---
 
