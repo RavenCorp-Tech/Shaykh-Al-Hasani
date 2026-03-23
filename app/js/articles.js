@@ -540,7 +540,6 @@ class ArticlesManager {
         </div>
         <h3 class="article-title">${this.escapeHtml(article.title)}</h3>
         <div class="article-meta">
-          <span>👤 ${this.escapeHtml(article.author)}</span>
           <span>⏱️ ${this.escapeHtml(article.readTime)}</span>
         </div>
       </div>

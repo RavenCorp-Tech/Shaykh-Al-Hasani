@@ -2086,9 +2086,6 @@ class ArticleDetail {
           <h1 class="article-detail-title">${this.escapeHtml(article.title)}</h1>
           <div class="article-detail-meta">
             <div>
-              <strong>Author:</strong> ${this.escapeHtml(article.author)}
-            </div>
-            <div>
               <strong>Category:</strong> ${this.escapeHtml(article.category)}
             </div>
             <div>

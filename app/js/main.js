@@ -29,6 +29,7 @@ class ShaykhAlHasaniApp {
     const savedTheme = localStorage.getItem('theme') || 'light';
     html.setAttribute('data-theme', savedTheme);
     this.updateThemeButton(themeBtn, savedTheme);
+    this.updateLogoByTheme(savedTheme);
 
     // Theme toggle click handler
     themeBtn.addEventListener('click', () => {
@@ -38,6 +39,7 @@ class ShaykhAlHasaniApp {
       html.setAttribute('data-theme', newTheme);
       localStorage.setItem('theme', newTheme);
       this.updateThemeButton(themeBtn, newTheme);
+      this.updateLogoByTheme(newTheme);
 
       // Add animation
       themeBtn.style.transform = 'scale(0.95)';
@@ -63,6 +65,14 @@ class ShaykhAlHasaniApp {
 
     html.setAttribute('data-theme', theme);
     localStorage.setItem('theme', theme);
+    this.updateLogoByTheme(theme);
+  }
+
+  updateLogoByTheme(theme) {
+    const logoImg = document.querySelector('.logo-container img');
+    if (!logoImg) return;
+
+    logoImg.src = theme === 'dark' ? '../assets/light-logo.png' : '../assets/al-hasani.png';
   }
 
   /* ============================================

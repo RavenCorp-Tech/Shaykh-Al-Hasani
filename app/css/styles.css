@@ -426,9 +426,15 @@ nav {
 
 .articles-container {
   display: grid;
-  grid-template-columns: 1fr;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 2rem;
   margin-top: 2rem;
+}
+
+@media (max-width: 1200px) {
+  .articles-container {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
 }
 
 .article-card {
@@ -462,7 +468,7 @@ nav {
 }
 
 .article-card:hover {
-  transform: translateX(8px);
+  transform: translateY(-6px);
   box-shadow: var(--shadow-md);
   border-color: var(--accent-color);
 }
