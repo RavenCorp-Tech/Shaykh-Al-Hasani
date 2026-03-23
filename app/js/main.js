@@ -8,11 +8,11 @@ class ShaykhAlHasaniApp {
   }
 
   init() {
-    this.setupThemeToggle();
-    this.setupMobileMenu();
-    this.setupScrollReveal();
-    this.setupSmoothScroll();
-    this.checkSystemTheme();
+    this.runSafely(() => this.setupThemeToggle(), 'theme toggle');
+    this.runSafely(() => this.setupMobileMenu(), 'mobile menu');
+    this.runSafely(() => this.setupScrollReveal(), 'scroll reveal');
+    this.runSafely(() => this.setupSmoothScroll(), 'smooth scroll');
+    this.runSafely(() => this.checkSystemTheme(), 'system theme');
   }
 
   /* ============================================
@@ -102,7 +102,11 @@ class ShaykhAlHasaniApp {
      ============================================ */
 
   setupScrollReveal() {
-    const revealElements = document.querySelectorAll('.article-card, .page-card, .section > *');
+    if (!('IntersectionObserver' in window)) return;
+
+    // Opt-in only: never hide core layout containers by default.
+    const revealElements = document.querySelectorAll('[data-reveal], .page-card');
+    if (!revealElements.length) return;
 
     const observerOptions = {
       threshold: 0.1,
@@ -112,14 +116,14 @@ class ShaykhAlHasaniApp {
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
-          entry.target.classList.add('reveal', 'active');
+          entry.target.classList.add('active');
           observer.unobserve(entry.target);
         }
       });
     }, observerOptions);
 
     revealElements.forEach(el => {
-      el.classList.add('reveal');
+      el.classList.add('reveal', 'reveal-pending');
       observer.observe(el);
     });
   }
@@ -171,6 +175,14 @@ class ShaykhAlHasaniApp {
     const words = text.trim().split(/\s+/).length;
     const minutes = Math.ceil(words / wordsPerMinute);
     return `${minutes} min read`;
+  }
+
+  runSafely(fn, featureName) {
+    try {
+      fn();
+    } catch (error) {
+      console.error(`Failed to initialize ${featureName}:`, error);
+    }
   }
 }
 
