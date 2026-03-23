@@ -2079,8 +2079,6 @@ class ArticleDetail {
     const container = document.createElement('div');
     container.className = 'container';
     container.innerHTML = `
-      <a href="articles.html" class="back-button">Back to Articles</a>
-
       <article class="article-detail fade-in">
         <div class="article-detail-header">
           <h1 class="article-detail-title">${this.escapeHtml(article.title)}</h1>

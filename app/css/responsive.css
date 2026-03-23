@@ -39,9 +39,28 @@
     top: 0;
   }
 
+  /* Home hero spacing */
+  body.home-page .hero .hero-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.35rem;
+  }
+
+  body.home-page .hero .hero-title {
+    margin-bottom: 0;
+  }
+
+  body.home-page .hero p {
+    margin-bottom: 0;
+  }
+
   nav {
+    width: calc(100% - 1rem);
+    margin: 0.5rem auto;
     padding: 0.75rem 1rem;
     min-height: 64px;
+    border-radius: 14px;
   }
 
   .nav-right {
@@ -56,10 +75,64 @@
     border-radius: 10px;
     background: var(--glass-bg-strong);
     line-height: 1;
+    padding: 0;
+    position: relative;
+    color: var(--text-primary);
+    font-size: 0;
+    cursor: pointer;
+    transition: transform var(--transition-speed) ease,
+                background var(--transition-speed) ease,
+                border-color var(--transition-speed) ease;
+  }
+
+  .mobile-menu-btn:hover {
+    background: var(--glass-bg);
+    border-color: var(--glass-border);
+    transform: translateY(-1px);
+  }
+
+  .mobile-menu-btn:active {
+    transform: translateY(0) scale(0.96);
+  }
+
+  .mobile-menu-btn::before,
+  .mobile-menu-btn::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 18px;
+    height: 2px;
+    border-radius: 999px;
+    background: currentColor;
+    transform: translate(-50%, -50%);
+    transition: transform var(--transition-speed) ease,
+                opacity var(--transition-speed) ease,
+                box-shadow var(--transition-speed) ease;
+  }
+
+  /* Hamburger (3 lines) */
+  .mobile-menu-btn::before {
+    box-shadow: 0 -6px 0 currentColor, 0 6px 0 currentColor;
+  }
+
+  .mobile-menu-btn::after {
+    opacity: 0;
+  }
+
+  /* X (2 lines) */
+  .mobile-menu-btn.is-open::before {
+    box-shadow: none;
+    transform: translate(-50%, -50%) rotate(45deg);
+  }
+
+  .mobile-menu-btn.is-open::after {
+    opacity: 1;
+    transform: translate(-50%, -50%) rotate(-45deg);
   }
 
   .nav-links {
-    display: none;
+    display: flex;
     position: absolute;
     top: calc(100% + 0.45rem);
     left: 0.75rem;
@@ -71,13 +144,28 @@
     backdrop-filter: blur(14px) saturate(140%);
     -webkit-backdrop-filter: blur(14px) saturate(140%);
     padding: 0.6rem;
-    gap: 0.25rem;
+    gap: 0.35rem;
     box-shadow: var(--shadow-lg);
     z-index: 1200;
+
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transform: translateY(-10px) scale(0.985);
+    transform-origin: top center;
+    transition: opacity var(--transition-speed) ease,
+                transform var(--transition-speed) ease,
+                visibility 0s linear var(--transition-speed);
   }
 
   .nav-links.active {
-    display: flex;
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transform: translateY(0) scale(1);
+    transition: opacity var(--transition-speed) ease,
+                transform var(--transition-speed) ease,
+                visibility 0s;
   }
 
   .nav-links a {
@@ -126,11 +214,27 @@
     border-radius: 0 0 22px 22px;
   }
 
+  body.home-page .hero {
+    padding-top: 7.75rem;
+    padding-bottom: 3.5rem;
+    min-height: 100vh;
+    min-height: 100svh;
+  }
+
   .hero h1 {
     font-size: 1.85rem;
     line-height: 1.24;
     letter-spacing: 0.2px;
     text-wrap: balance;
+  }
+
+  body.home-page .hero .hero-title {
+    font-size: 2.35rem;
+    line-height: 1.18;
+  }
+
+  body.home-page .hero .hero-title-prefix {
+    font-size: 0.62em;
   }
 
   .hero p {
@@ -140,7 +244,7 @@
 
   .cta-buttons {
     flex-direction: column;
-    gap: 0.75rem;
+    gap: 1rem;
   }
 
   .btn {
@@ -350,20 +454,15 @@
     height: 38px;
     min-width: 38px;
     padding: 0;
-    font-size: 0;
+    font-size: 1.05rem;
     border-radius: 10px;
     justify-content: center;
-  }
-
-  .theme-toggle::before {
-    content: '◐';
-    font-size: 0.95rem;
   }
 
   .mobile-menu-btn {
     width: 38px;
     height: 38px;
-    font-size: 1.2rem;
+    font-size: 0;
   }
 
   /* Hero Section */
@@ -372,10 +471,30 @@
     border-radius: 0 0 18px 18px;
   }
 
+  body.home-page .hero .hero-content {
+    gap: 1.2rem;
+  }
+
+  body.home-page .hero {
+    padding-top: 7rem;
+    padding-bottom: 3rem;
+    min-height: 100vh;
+    min-height: 100svh;
+  }
+
   .hero h1 {
     font-size: 1.3rem;
     margin-bottom: 0.75rem;
     line-height: 1.32;
+  }
+
+  body.home-page .hero .hero-title {
+    font-size: 1.95rem;
+    line-height: 1.22;
+  }
+
+  body.home-page .hero .hero-title-prefix {
+    font-size: 0.62em;
   }
 
   .hero p {

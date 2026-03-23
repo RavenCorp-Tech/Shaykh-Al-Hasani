@@ -7,17 +7,16 @@
   <meta name="keywords" content="Shaykh al-Hasani, hadith, Islamic scholarship, fatawa, Islamic knowledge, Arabic, diacritical marks">
   <meta name="author" content="Shaykh Abū ʿAlī al-Ḥārith bin ʿAlī al-Ḥasanī">
   <title>Shaykh al-Ḥasanī - Islamic Scholarship & Ḥadīth</title>
-  <link rel="icon" type="image/png" href="../assets/al-hasani.png">
+  <link rel="icon" type="image/png" href="../assets/light-logo.png">
   <link rel="stylesheet" href="css/styles.css">
   <link rel="stylesheet" href="css/responsive.css">
 </head>
-<body>
+<body class="home-page">
   <!-- Navigation -->
   <header role="banner">
     <nav>
       <a href="index.html" class="logo-container">
         <img src="../assets/al-hasani.png" alt="Shaykh al-Ḥasanī Logo">
-        <span class="site-title">Shaykh al-Ḥasanī</span>
       </a>
 
       <div class="nav-right">
@@ -30,7 +29,7 @@
           <li><a href="articles.html">Blog</a></li>
         </ul>
 
-        <button class="theme-toggle" aria-label="Toggle dark/light mode">☀️ Light Mode</button>
+        <button class="theme-toggle" aria-label="Toggle dark/light mode">🌙</button>
         <button class="mobile-menu-btn" aria-label="Toggle navigation menu">☰</button>
       </div>
     </nav>
@@ -41,7 +40,10 @@
     <!-- Hero Section -->
     <section class="hero">
       <div class="hero-content">
-        <h1>Shaykh al-Muḥaddith Abū ʿAlī al-Ḥārith bin ʿAlī al-Ḥasanī</h1>
+        <h1 class="hero-title">
+          <span class="hero-title-prefix">Shaykh al-Muḥaddith</span>
+          <span class="hero-title-name">Abū ʿAlī al-Ḥārith bin ʿAlī al-Ḥasanī</span>
+        </h1>
         <p>A premier hadith scholar from Iraq offering authentic Islamic knowledge through meticulously translated works focusing on Prophetic Ḥadīth and its sciences</p>
 
         <div class="cta-buttons">
@@ -95,30 +97,25 @@
     </section>
 
     <!-- Featured Content Section -->
-    <section class="section" style="background: var(--bg-secondary); margin: 2rem 0;">
+    <section class="section about-section">
       <div class="container">
         <h2 class="section-title">About Shaykh al-Ḥasanī</h2>
-        <p class="section-subtitle" style="margin-bottom: 2rem;">Preserving Islamic Heritage Through Scholarship</p>
+        <p class="section-subtitle">Preserving Islamic Heritage Through Scholarship</p>
 
-        <div style="
-          display: grid;
-          grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-          gap: 2rem;
-          margin-top: 2rem;
-        ">
-          <div style="padding: 1.5rem; background: var(--bg-primary); border-radius: 12px; border: 1px solid var(--border-color);">
-            <h3 style="color: var(--primary-color); margin-bottom: 0.75rem; font-size: 1.1rem;">🎓 Expertise</h3>
-            <p style="color: var(--text-secondary);">Specialized in hadith sciences (ʿulūm al-ḥadīth) with deep knowledge of narrators' biographies and chain authentication</p>
+        <div class="about-grid">
+          <div class="about-card">
+            <h3 class="about-card-title">🎓 Expertise</h3>
+            <p class="about-card-text">Specialized in hadith sciences (ʿulūm al-ḥadīth) with deep knowledge of narrators' biographies and chain authentication</p>
           </div>
 
-          <div style="padding: 1.5rem; background: var(--bg-primary); border-radius: 12px; border: 1px solid var(--border-color);">
-            <h3 style="color: var(--primary-color); margin-bottom: 0.75rem; font-size: 1.1rem;">🌍 Translation Mission</h3>
-            <p style="color: var(--text-secondary);">Dedicated to making authentic Islamic knowledge accessible to English-speaking audiences through careful, scholarly translation</p>
+          <div class="about-card">
+            <h3 class="about-card-title">🌍 Translation Mission</h3>
+            <p class="about-card-text">Dedicated to making authentic Islamic knowledge accessible to English-speaking audiences through careful, scholarly translation</p>
           </div>
 
-          <div style="padding: 1.5rem; background: var(--bg-primary); border-radius: 12px; border: 1px solid var(--border-color);">
-            <h3 style="color: var(--primary-color); margin-bottom: 0.75rem; font-size: 1.1rem;">✍️ Authentic Sources</h3>
-            <p style="color: var(--text-secondary);">All works are grounded in classical Islamic scholarship and contemporary research, presented with proper diacritical marks and transliteration</p>
+          <div class="about-card">
+            <h3 class="about-card-title">✍️ Authentic Sources</h3>
+            <p class="about-card-text">All works are grounded in classical Islamic scholarship and contemporary research, presented with proper diacritical marks and transliteration</p>
           </div>
         </div>
       </div>

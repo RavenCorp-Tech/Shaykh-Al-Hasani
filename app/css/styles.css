@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Cormorant+Garamond:wght@500;600&family=Libre+Baskerville:wght@400;700&display=swap');
+
 /* ============================================
    SHAYKH AL-HASANI WEBSITE - MAIN STYLES
    ============================================ */
@@ -71,7 +73,7 @@ html {
 }
 
 body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: 'Libre Baskerville', Georgia, 'Times New Roman', Times, serif;
   background:
     radial-gradient(circle at 12% -20%, rgba(83, 196, 172, 0.18), transparent 42%),
     radial-gradient(circle at 90% -10%, rgba(255, 197, 106, 0.16), transparent 36%),
@@ -89,24 +91,40 @@ body {
    ============================================ */
 
 header {
-  background: var(--glass-bg);
-  border-bottom: 1px solid var(--border-color);
-  position: sticky;
+  background: transparent;
+  border-bottom: none;
+  position: fixed;
   top: 0;
-  z-index: 1000;
-  box-shadow: var(--shadow-sm);
-  backdrop-filter: blur(18px) saturate(170%);
-  -webkit-backdrop-filter: blur(18px) saturate(170%);
+  left: 0;
+  right: 0;
+  z-index: 2000;
+  box-shadow: none;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
   transition: all var(--transition-speed) ease;
+}
+
+main {
+  padding-top: 6.2rem;
+}
+
+body.home-page main {
+  padding-top: 0;
 }
 
 nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  max-width: 1400px;
-  margin: 0 auto;
-  padding: 1rem 2rem;
+  width: min(1040px, calc(100% - 2.5rem));
+  margin: 0.75rem auto 0.55rem;
+  padding: 0.7rem 1.25rem;
+  border-radius: 999px;
+  border: 1px solid var(--glass-border);
+  background: var(--glass-bg-strong);
+  box-shadow: var(--shadow-md);
+  backdrop-filter: blur(18px) saturate(170%);
+  -webkit-backdrop-filter: blur(18px) saturate(170%);
 }
 
 .logo-container {
@@ -138,7 +156,7 @@ nav {
 .nav-right {
   display: flex;
   align-items: center;
-  gap: 2rem;
+  gap: 1.2rem;
 }
 
 .nav-links {
@@ -183,7 +201,8 @@ nav {
   cursor: pointer;
   display: flex;
   align-items: center;
-  gap: 0.5rem;
+  justify-content: center;
+  gap: 0;
   transition: all var(--transition-speed) ease;
   font-size: 0.9rem;
   font-weight: 500;
@@ -192,7 +211,7 @@ nav {
 
 .theme-toggle:hover {
   background: var(--primary-color);
-  color: #ffffff;
+  color: var(--bg-primary);
   transform: translateY(-2px);
 }
 
@@ -218,6 +237,21 @@ nav {
   overflow: hidden;
   border-radius: 0 0 28px 28px;
   box-shadow: var(--shadow-lg);
+}
+
+/* Smaller hero for inner pages (keeps good contrast in both themes) */
+.page-hero {
+  padding: 4rem 2rem;
+}
+
+body.home-page .hero {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 12rem;
+  padding-bottom: 6.5rem;
+  min-height: 100vh;
+  min-height: 100svh;
 }
 
 .hero::before {
@@ -253,6 +287,29 @@ nav {
   margin-bottom: 1rem;
   letter-spacing: 1px;
   text-shadow: 0 8px 24px rgba(0, 0, 0, 0.32);
+}
+.hero-title {
+  margin-bottom: 1rem;
+}
+
+.hero-title-prefix {
+  display: block;
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 0.58em;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.74);
+  margin-bottom: 0.35rem;
+}
+
+.hero-title-name {
+  display: block;
+  font-family: 'Cinzel', Georgia, serif;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  color: #ffffff;
+  text-shadow: 0 12px 34px rgba(0, 0, 0, 0.4), 0 0 14px rgba(212, 165, 116, 0.26);
 }
 
 .hero p {
@@ -332,6 +389,10 @@ nav {
   padding: 4rem 2rem;
   max-width: 1400px;
   margin: 0 auto;
+}
+
+main > .section:first-child {
+  padding-top: 2rem;
 }
 
 .section-title {
@@ -418,6 +479,44 @@ nav {
 .page-card p {
   color: var(--text-secondary);
   font-size: 0.9rem;
+}
+
+/* ============================================
+   ABOUT SECTION
+   ============================================ */
+
+.about-section {
+  background: var(--bg-secondary);
+  margin: 2rem auto;
+}
+
+.about-section .section-subtitle {
+  margin-bottom: 2rem;
+}
+
+.about-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.about-card {
+  padding: 1.5rem;
+  background: var(--bg-primary);
+  border-radius: 12px;
+  border: 1px solid var(--border-color);
+}
+
+.about-card-title {
+  color: var(--primary-color);
+  margin-bottom: 0.75rem;
+  font-size: 1.1rem;
+  font-weight: 700;
+}
+
+.about-card-text {
+  color: var(--text-secondary);
 }
 
 /* ============================================

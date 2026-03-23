@@ -51,8 +51,9 @@ class ShaykhAlHasaniApp {
 
   updateThemeButton(btn, theme) {
     const icon = theme === 'light' ? '🌙' : '☀️';
-    const text = theme === 'light' ? 'Dark Mode' : 'Light Mode';
-    btn.innerHTML = `${icon} ${text}`;
+    const label = theme === 'light' ? 'Switch to dark mode' : 'Switch to light mode';
+    btn.textContent = icon;
+    btn.setAttribute('aria-label', label);
   }
 
   checkSystemTheme() {
@@ -85,24 +86,37 @@ class ShaykhAlHasaniApp {
 
     if (!menuBtn || !navLinks) return;
 
+    const setMenuOpen = (isOpen) => {
+      navLinks.classList.toggle('active', isOpen);
+      menuBtn.classList.toggle('is-open', isOpen);
+      menuBtn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+      menuBtn.setAttribute('aria-label', isOpen ? 'Close navigation menu' : 'Open navigation menu');
+
+      // Keep a simple text fallback (CSS will typically render the icon)
+      menuBtn.textContent = isOpen ? '✕' : '☰';
+    };
+
+    // Initialize
+    if (!menuBtn.hasAttribute('aria-expanded')) {
+      menuBtn.setAttribute('aria-expanded', 'false');
+    }
+    setMenuOpen(navLinks.classList.contains('active'));
+
     menuBtn.addEventListener('click', () => {
-      navLinks.classList.toggle('active');
-      menuBtn.textContent = navLinks.classList.contains('active') ? '✕' : '☰';
+      setMenuOpen(!navLinks.classList.contains('active'));
     });
 
     // Close menu when a link is clicked
     navLinks.querySelectorAll('a').forEach(link => {
       link.addEventListener('click', () => {
-        navLinks.classList.remove('active');
-        menuBtn.textContent = '☰';
+        setMenuOpen(false);
       });
     });
 
     // Close menu when clicking outside
     document.addEventListener('click', (e) => {
       if (!e.target.closest('nav')) {
-        navLinks.classList.remove('active');
-        menuBtn.textContent = '☰';
+        setMenuOpen(false);
       }
     });
   }
@@ -225,9 +239,9 @@ if ('IntersectionObserver' in window) {
    ============================================ */
 
 function navigateTo(url) {
-  const currentPage = document.body;
-  currentPage.style.opacity = '0.7';
-  currentPage.style.transform = 'translateY(-10px)';
+  const transitionTarget = document.querySelector('main') || document.body;
+  transitionTarget.style.opacity = '0.7';
+  transitionTarget.style.transform = 'translateY(-10px)';
 
   setTimeout(() => {
     window.location.href = url;
@@ -235,8 +249,9 @@ function navigateTo(url) {
 }
 
 window.addEventListener('pageshow', () => {
-  document.body.style.opacity = '1';
-  document.body.style.transform = 'translateY(0)';
+  const transitionTarget = document.querySelector('main') || document.body;
+  transitionTarget.style.opacity = '1';
+  transitionTarget.style.transform = 'none';
 });
 
 /* ============================================
@@ -289,7 +304,12 @@ document.addEventListener('keydown', (e) => {
     const menuBtn = document.querySelector('.mobile-menu-btn');
     if (navLinks && navLinks.classList.contains('active')) {
       navLinks.classList.remove('active');
-      if (menuBtn) menuBtn.textContent = '☰';
+      if (menuBtn) {
+        menuBtn.classList.remove('is-open');
+        menuBtn.setAttribute('aria-expanded', 'false');
+        menuBtn.setAttribute('aria-label', 'Open navigation menu');
+        menuBtn.textContent = '☰';
+      }
     }
   }
 });
