@@ -12,32 +12,8 @@ class ArticleDetail {
     }
   }
 
-  init() {
-    const urlParams = new URLSearchParams(window.location.search);
-    const articleId = urlParams.get('id');
-
-    const isDetailPage = window.location.pathname.endsWith('article-detail.html');
-
-    if (!articleId) {
-      if (isDetailPage) {
-        this.showError('Article not found');
-      }
-      return;
-    }
-
-    const article = this.getArticleById(articleId);
-    if (!article) {
-      this.showError('Article not found');
-      return;
-    }
-
-    this.renderArticle(article);
-    this.setupFootnoteInteractions();
-    this.setupTableOfContents();
-  }
-
-  getArticleById(articleId) {
-    const articleGetters = {
+  getArticleGetters() {
+    return {
       '1': () => this.articleContent,
       '2': () => this.getSecondArticleContent(),
       '3': () => this.getThirdArticleContent(),
@@ -80,8 +56,53 @@ class ArticleDetail {
       '40': () => this.getFortiethArticleContent(),
       '41': () => this.getFortyFirstArticleContent()
     };
+  }
 
-    const getArticle = articleGetters[String(articleId)];
+  getAllArticleIds() {
+    return Object.keys(this.getArticleGetters())
+      .map((id) => Number(id))
+      .filter((n) => Number.isFinite(n))
+      .sort((a, b) => a - b);
+  }
+
+  getAllArticles() {
+    const getters = this.getArticleGetters();
+    return this.getAllArticleIds()
+      .map((id) => {
+        const get = getters[String(id)];
+        if (typeof get !== 'function') return null;
+        const article = get();
+        return article && article.title ? article : null;
+      })
+      .filter(Boolean);
+  }
+
+  init() {
+    const urlParams = new URLSearchParams(window.location.search);
+    const articleId = urlParams.get('id');
+
+    const isDetailPage = window.location.pathname.endsWith('article-detail.html');
+
+    if (!articleId) {
+      if (isDetailPage) {
+        this.showError('Article not found');
+      }
+      return;
+    }
+
+    const article = this.getArticleById(articleId);
+    if (!article) {
+      this.showError('Article not found');
+      return;
+    }
+
+    this.renderArticle(article);
+    this.setupFootnoteInteractions();
+    this.setupTableOfContents();
+  }
+
+  getArticleById(articleId) {
+    const getArticle = this.getArticleGetters()[String(articleId)];
     return typeof getArticle === 'function' ? getArticle() : null;
   }
 

@@ -9,10 +9,62 @@ class ShaykhAlHasaniApp {
 
   init() {
     this.runSafely(() => this.setupThemeToggle(), 'theme toggle');
+    this.runSafely(() => this.setupCardViewToggle(), 'card view toggle');
     this.runSafely(() => this.setupMobileMenu(), 'mobile menu');
     this.runSafely(() => this.setupScrollReveal(), 'scroll reveal');
     this.runSafely(() => this.setupSmoothScroll(), 'smooth scroll');
     this.runSafely(() => this.checkSystemTheme(), 'system theme');
+  }
+
+  /* ============================================
+     CARD VIEW (GRID/LIST)
+     ============================================ */
+
+  setupCardViewToggle() {
+    const viewButtons = Array.from(document.querySelectorAll('.view-toggle'));
+    if (!viewButtons.length) return;
+
+    const STORAGE_KEY = 'cardView';
+    const validViews = new Set(['grid', 'list']);
+
+    const getView = () => {
+      const saved = localStorage.getItem(STORAGE_KEY);
+      return validViews.has(saved) ? saved : 'grid';
+    };
+
+    const applyView = (view) => {
+      const containers = document.querySelectorAll('.articles-container');
+      containers.forEach((container) => {
+        container.classList.toggle('is-grid', view === 'grid');
+        container.classList.toggle('is-list', view === 'list');
+      });
+
+      viewButtons.forEach((btn) => {
+        btn.dataset.view = view;
+        btn.textContent = view === 'grid' ? '▦' : '≡';
+        btn.title = view === 'grid' ? 'Grid view' : 'List view';
+        btn.setAttribute(
+          'aria-label',
+          view === 'grid' ? 'Grid view (tap to switch to list)' : 'List view (tap to switch to grid)'
+        );
+      });
+    };
+
+    applyView(getView());
+
+    viewButtons.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const current = btn.dataset.view === 'list' ? 'list' : 'grid';
+        const next = current === 'grid' ? 'list' : 'grid';
+        localStorage.setItem(STORAGE_KEY, next);
+        applyView(next);
+
+        btn.style.transform = 'scale(0.95)';
+        setTimeout(() => {
+          btn.style.transform = 'scale(1)';
+        }, 200);
+      });
+    });
   }
 
   /* ============================================

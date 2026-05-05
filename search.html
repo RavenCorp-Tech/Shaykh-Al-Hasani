@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Search articles by title or content on Shaykh al-Ḥasanī's website.">
+  <meta name="description" content="Search the site by title or content on Shaykh al-Ḥasanī's website.">
   <meta name="keywords" content="search, articles, hadith, Islamic sciences">
-  <title>Search Articles - Shaykh al-Ḥasanī</title>
+  <title>Search - Shaykh al-Ḥasanī</title>
   <link rel="icon" type="image/png" href="assets/light-logo.png">
   <link rel="stylesheet" href="css/styles.css">
   <link rel="stylesheet" href="css/responsive.css">
@@ -39,8 +39,8 @@
   <main>
     <section class="section">
       <div class="container">
-        <h1 class="section-title">Search Articles</h1>
-        <p class="section-subtitle">Type words from the title or the article content</p>
+        <h1 class="section-title">Search</h1>
+        <p class="section-subtitle">Search across articles, books, videos, and more</p>
 
         <form id="searchForm" class="search-form" role="search" aria-label="Search articles">
           <input id="searchInput" class="search-input" type="search" name="q" placeholder="Search…" autocomplete="off" />
@@ -48,6 +48,9 @@
         </form>
 
         <div id="searchSummary" class="search-summary" aria-live="polite"></div>
+        <div class="cards-toolbar" role="group" aria-label="View options">
+          <button class="view-toggle" type="button" aria-label="Grid view (tap to switch to list)" title="Grid view">▦</button>
+        </div>
         <div id="searchResults" class="articles-container"></div>
       </div>
     </section>
